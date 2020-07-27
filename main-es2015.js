@@ -129,7 +129,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_bootstrap_typeahead__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ngx-bootstrap/typeahead */ "./node_modules/ngx-bootstrap/__ivy_ngcc__/typeahead/fesm2015/ngx-bootstrap-typeahead.js");
 /* harmony import */ var _services_accu_weather_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/accu-weather.service */ "./src/app/services/accu-weather.service.ts");
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
-/* harmony import */ var _state_reducers__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./state/reducers */ "./src/app/state/reducers/index.ts");
+/* harmony import */ var _state_favorite__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./state/favorite */ "./src/app/state/favorite/index.ts");
 
 
 
@@ -168,8 +168,8 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
             _core_core_module__WEBPACK_IMPORTED_MODULE_8__["CoreModule"],
             _shared_shared_module__WEBPACK_IMPORTED_MODULE_10__["SharedModule"],
             _pages_pages_pages_module__WEBPACK_IMPORTED_MODULE_9__["PagesModule"],
-            _ngrx_store__WEBPACK_IMPORTED_MODULE_13__["StoreModule"].forRoot(_state_reducers__WEBPACK_IMPORTED_MODULE_14__["reducers"], {
-                metaReducers: _state_reducers__WEBPACK_IMPORTED_MODULE_14__["metaReducers"]
+            _ngrx_store__WEBPACK_IMPORTED_MODULE_13__["StoreModule"].forRoot(_state_favorite__WEBPACK_IMPORTED_MODULE_14__["reducers"], {
+                metaReducers: _state_favorite__WEBPACK_IMPORTED_MODULE_14__["metaReducers"]
             }),
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -200,8 +200,8 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                     _core_core_module__WEBPACK_IMPORTED_MODULE_8__["CoreModule"],
                     _shared_shared_module__WEBPACK_IMPORTED_MODULE_10__["SharedModule"],
                     _pages_pages_pages_module__WEBPACK_IMPORTED_MODULE_9__["PagesModule"],
-                    _ngrx_store__WEBPACK_IMPORTED_MODULE_13__["StoreModule"].forRoot(_state_reducers__WEBPACK_IMPORTED_MODULE_14__["reducers"], {
-                        metaReducers: _state_reducers__WEBPACK_IMPORTED_MODULE_14__["metaReducers"]
+                    _ngrx_store__WEBPACK_IMPORTED_MODULE_13__["StoreModule"].forRoot(_state_favorite__WEBPACK_IMPORTED_MODULE_14__["reducers"], {
+                        metaReducers: _state_favorite__WEBPACK_IMPORTED_MODULE_14__["metaReducers"]
                     }),
                 ],
                 providers: [
@@ -1909,20 +1909,20 @@ const setLocalStorage = (key, value = '') => {
 /*!*****************************************************!*\
   !*** ./src/app/state/app-favorite-state.service.ts ***!
   \*****************************************************/
-/*! exports provided: __INIT_FAVORITE_STATE, AppFavoriteStateService, AppFavoriteStateService2, setMapper */
+/*! exports provided: AppFavoriteStateService, __INIT_FAVORITE_STATE, AppFavoriteStateService2, setMapper */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__INIT_FAVORITE_STATE", function() { return __INIT_FAVORITE_STATE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppFavoriteStateService", function() { return AppFavoriteStateService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__INIT_FAVORITE_STATE", function() { return __INIT_FAVORITE_STATE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppFavoriteStateService2", function() { return AppFavoriteStateService2; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setMapper", function() { return setMapper; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
 /* harmony import */ var _shared_utils_local_strorage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/utils/local-strorage */ "./src/app/shared/utils/local-strorage.ts");
-/* harmony import */ var _reducers_favorite_selector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reducers/favorite.selector */ "./src/app/state/reducers/favorite.selector.ts");
-/* harmony import */ var _reducers_favorite_action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./reducers/favorite.action */ "./src/app/state/reducers/favorite.action.ts");
+/* harmony import */ var _favorite_favorite_selector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./favorite/favorite.selector */ "./src/app/state/favorite/favorite.selector.ts");
+/* harmony import */ var _favorite_favorite_action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./favorite/favorite.action */ "./src/app/state/favorite/favorite.action.ts");
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
 
 
@@ -1931,22 +1931,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const __INIT_FAVORITE_STATE = {
-    mapper: {},
-    locations: [],
-    locationsForecasts: []
-};
-const INIT_STATE = Object(_shared_utils_local_strorage__WEBPACK_IMPORTED_MODULE_2__["getLocalStorage"])("app-state" /* STATE */) || __INIT_FAVORITE_STATE;
 class AppFavoriteStateService {
     constructor(store) {
         this.store = store;
-        this.state$ = this.store.select(_reducers_favorite_selector__WEBPACK_IMPORTED_MODULE_3__["selectFavoriteStore"]);
+        this.state$ = this.store.select(_favorite_favorite_selector__WEBPACK_IMPORTED_MODULE_3__["selectFavoriteStore"]);
     }
     addFavorite(location, locationForecast) {
-        this.store.dispatch(Object(_reducers_favorite_action__WEBPACK_IMPORTED_MODULE_4__["addFavorite"])({ payload: { location, locationForecast } }));
+        this.store.dispatch(Object(_favorite_favorite_action__WEBPACK_IMPORTED_MODULE_4__["addFavorite"])({ payload: { location, locationForecast } }));
     }
     removeFavorite(location) {
-        this.store.dispatch(Object(_reducers_favorite_action__WEBPACK_IMPORTED_MODULE_4__["removeFavorite"])({ payload: { location } }));
+        this.store.dispatch(Object(_favorite_favorite_action__WEBPACK_IMPORTED_MODULE_4__["removeFavorite"])({ payload: { location } }));
     }
 }
 AppFavoriteStateService.ɵfac = function AppFavoriteStateService_Factory(t) { return new (t || AppFavoriteStateService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_ngrx_store__WEBPACK_IMPORTED_MODULE_5__["Store"])); };
@@ -1957,15 +1951,12 @@ AppFavoriteStateService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵ�
                 providedIn: 'root'
             }]
     }], function () { return [{ type: _ngrx_store__WEBPACK_IMPORTED_MODULE_5__["Store"] }]; }, null); })();
-///// this is self implement.. you wanted state management/
-// but because you wanted NGRX to implemented i used the above code
-/**
- * State (ish) management
- * I could used NGRX but it's over kill for small usage
- * i used the same pattern (immutable) and API for updating the state
- *
- * @deprecated not in used
- */
+const __INIT_FAVORITE_STATE = {
+    mapper: {},
+    locations: [],
+    locationsForecasts: []
+};
+const INIT_STATE = Object(_shared_utils_local_strorage__WEBPACK_IMPORTED_MODULE_2__["getLocalStorage"])("app-state" /* STATE */) || __INIT_FAVORITE_STATE;
 class AppFavoriteStateService2 {
     constructor() {
         this._state$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](INIT_STATE);
@@ -2017,9 +2008,9 @@ function setMapper(locations) {
 
 /***/ }),
 
-/***/ "./src/app/state/reducers/favorite.action.ts":
+/***/ "./src/app/state/favorite/favorite.action.ts":
 /*!***************************************************!*\
-  !*** ./src/app/state/reducers/favorite.action.ts ***!
+  !*** ./src/app/state/favorite/favorite.action.ts ***!
   \***************************************************/
 /*! exports provided: FAVORITE, addFavorite, removeFavorite */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2038,9 +2029,9 @@ const removeFavorite = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createAc
 
 /***/ }),
 
-/***/ "./src/app/state/reducers/favorite.reducer.ts":
+/***/ "./src/app/state/favorite/favorite.reducer.ts":
 /*!****************************************************!*\
-  !*** ./src/app/state/reducers/favorite.reducer.ts ***!
+  !*** ./src/app/state/favorite/favorite.reducer.ts ***!
   \****************************************************/
 /*! exports provided: _favoriteReducer, favoriteReducer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2051,7 +2042,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "favoriteReducer", function() { return favoriteReducer; });
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
 /* harmony import */ var _app_favorite_state_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../app-favorite-state.service */ "./src/app/state/app-favorite-state.service.ts");
-/* harmony import */ var _favorite_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./favorite.action */ "./src/app/state/reducers/favorite.action.ts");
+/* harmony import */ var _favorite_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./favorite.action */ "./src/app/state/favorite/favorite.action.ts");
 
 
 
@@ -2082,9 +2073,9 @@ function favoriteReducer(state, action) {
 
 /***/ }),
 
-/***/ "./src/app/state/reducers/favorite.selector.ts":
+/***/ "./src/app/state/favorite/favorite.selector.ts":
 /*!*****************************************************!*\
-  !*** ./src/app/state/reducers/favorite.selector.ts ***!
+  !*** ./src/app/state/favorite/favorite.selector.ts ***!
   \*****************************************************/
 /*! exports provided: selectFavoriteState, selectFavoriteStore */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2101,9 +2092,9 @@ const selectFavoriteStore = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["cre
 
 /***/ }),
 
-/***/ "./src/app/state/reducers/index.ts":
+/***/ "./src/app/state/favorite/index.ts":
 /*!*****************************************!*\
-  !*** ./src/app/state/reducers/index.ts ***!
+  !*** ./src/app/state/favorite/index.ts ***!
   \*****************************************/
 /*! exports provided: reducers, metaReducers */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2113,7 +2104,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reducers", function() { return reducers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "metaReducers", function() { return metaReducers; });
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _favorite_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./favorite.reducer */ "./src/app/state/reducers/favorite.reducer.ts");
+/* harmony import */ var _favorite_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./favorite.reducer */ "./src/app/state/favorite/favorite.reducer.ts");
 
 
 const reducers = {

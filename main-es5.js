@@ -323,9 +323,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _state_reducers__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
-    /*! ./state/reducers */
-    "./src/app/state/reducers/index.ts");
+    var _state_favorite__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! ./state/favorite */
+    "./src/app/state/favorite/index.ts");
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
@@ -342,8 +342,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       providers: [_services_accu_weather_service__WEBPACK_IMPORTED_MODULE_12__["AccuWeatherService"]],
       imports: [[_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"], ngx_bootstrap_typeahead__WEBPACK_IMPORTED_MODULE_11__["TypeaheadModule"].forRoot(), _nebular_theme__WEBPACK_IMPORTED_MODULE_6__["NbThemeModule"].forRoot({
         name: 'corporate'
-      }), _nebular_theme__WEBPACK_IMPORTED_MODULE_6__["NbLayoutModule"], _nebular_eva_icons__WEBPACK_IMPORTED_MODULE_7__["NbEvaIconsModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_6__["NbButtonModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_6__["NbToastrModule"].forRoot(), _core_core_module__WEBPACK_IMPORTED_MODULE_8__["CoreModule"], _shared_shared_module__WEBPACK_IMPORTED_MODULE_10__["SharedModule"], _pages_pages_pages_module__WEBPACK_IMPORTED_MODULE_9__["PagesModule"], _ngrx_store__WEBPACK_IMPORTED_MODULE_13__["StoreModule"].forRoot(_state_reducers__WEBPACK_IMPORTED_MODULE_14__["reducers"], {
-        metaReducers: _state_reducers__WEBPACK_IMPORTED_MODULE_14__["metaReducers"]
+      }), _nebular_theme__WEBPACK_IMPORTED_MODULE_6__["NbLayoutModule"], _nebular_eva_icons__WEBPACK_IMPORTED_MODULE_7__["NbEvaIconsModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_6__["NbButtonModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_6__["NbToastrModule"].forRoot(), _core_core_module__WEBPACK_IMPORTED_MODULE_8__["CoreModule"], _shared_shared_module__WEBPACK_IMPORTED_MODULE_10__["SharedModule"], _pages_pages_pages_module__WEBPACK_IMPORTED_MODULE_9__["PagesModule"], _ngrx_store__WEBPACK_IMPORTED_MODULE_13__["StoreModule"].forRoot(_state_favorite__WEBPACK_IMPORTED_MODULE_14__["reducers"], {
+        metaReducers: _state_favorite__WEBPACK_IMPORTED_MODULE_14__["metaReducers"]
       })]]
     });
 
@@ -363,8 +363,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]],
           imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"], ngx_bootstrap_typeahead__WEBPACK_IMPORTED_MODULE_11__["TypeaheadModule"].forRoot(), _nebular_theme__WEBPACK_IMPORTED_MODULE_6__["NbThemeModule"].forRoot({
             name: 'corporate'
-          }), _nebular_theme__WEBPACK_IMPORTED_MODULE_6__["NbLayoutModule"], _nebular_eva_icons__WEBPACK_IMPORTED_MODULE_7__["NbEvaIconsModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_6__["NbButtonModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_6__["NbToastrModule"].forRoot(), _core_core_module__WEBPACK_IMPORTED_MODULE_8__["CoreModule"], _shared_shared_module__WEBPACK_IMPORTED_MODULE_10__["SharedModule"], _pages_pages_pages_module__WEBPACK_IMPORTED_MODULE_9__["PagesModule"], _ngrx_store__WEBPACK_IMPORTED_MODULE_13__["StoreModule"].forRoot(_state_reducers__WEBPACK_IMPORTED_MODULE_14__["reducers"], {
-            metaReducers: _state_reducers__WEBPACK_IMPORTED_MODULE_14__["metaReducers"]
+          }), _nebular_theme__WEBPACK_IMPORTED_MODULE_6__["NbLayoutModule"], _nebular_eva_icons__WEBPACK_IMPORTED_MODULE_7__["NbEvaIconsModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_6__["NbButtonModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_6__["NbToastrModule"].forRoot(), _core_core_module__WEBPACK_IMPORTED_MODULE_8__["CoreModule"], _shared_shared_module__WEBPACK_IMPORTED_MODULE_10__["SharedModule"], _pages_pages_pages_module__WEBPACK_IMPORTED_MODULE_9__["PagesModule"], _ngrx_store__WEBPACK_IMPORTED_MODULE_13__["StoreModule"].forRoot(_state_favorite__WEBPACK_IMPORTED_MODULE_14__["reducers"], {
+            metaReducers: _state_favorite__WEBPACK_IMPORTED_MODULE_14__["metaReducers"]
           })],
           providers: [_services_accu_weather_service__WEBPACK_IMPORTED_MODULE_12__["AccuWeatherService"]],
           bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
@@ -3101,7 +3101,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./src/app/state/app-favorite-state.service.ts ***!
     \*****************************************************/
 
-  /*! exports provided: __INIT_FAVORITE_STATE, AppFavoriteStateService, AppFavoriteStateService2, setMapper */
+  /*! exports provided: AppFavoriteStateService, __INIT_FAVORITE_STATE, AppFavoriteStateService2, setMapper */
 
   /***/
   function srcAppStateAppFavoriteStateServiceTs(module, __webpack_exports__, __webpack_require__) {
@@ -3111,14 +3111,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "__INIT_FAVORITE_STATE", function () {
-      return __INIT_FAVORITE_STATE;
+    __webpack_require__.d(__webpack_exports__, "AppFavoriteStateService", function () {
+      return AppFavoriteStateService;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "AppFavoriteStateService", function () {
-      return AppFavoriteStateService;
+    __webpack_require__.d(__webpack_exports__, "__INIT_FAVORITE_STATE", function () {
+      return __INIT_FAVORITE_STATE;
     });
     /* harmony export (binding) */
 
@@ -3153,31 +3153,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _reducers_favorite_selector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./reducers/favorite.selector */
-    "./src/app/state/reducers/favorite.selector.ts");
+    var _favorite_favorite_selector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./favorite/favorite.selector */
+    "./src/app/state/favorite/favorite.selector.ts");
     /* harmony import */
 
 
-    var _reducers_favorite_action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ./reducers/favorite.action */
-    "./src/app/state/reducers/favorite.action.ts");
+    var _favorite_favorite_action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./favorite/favorite.action */
+    "./src/app/state/favorite/favorite.action.ts");
     /* harmony import */
 
 
     var _ngrx_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! @ngrx/store */
     "./node_modules/@ngrx/store/__ivy_ngcc__/fesm2015/store.js");
-
-    var __INIT_FAVORITE_STATE = {
-      mapper: {},
-      locations: [],
-      locationsForecasts: []
-    };
-
-    var INIT_STATE = Object(_shared_utils_local_strorage__WEBPACK_IMPORTED_MODULE_2__["getLocalStorage"])("app-state"
-    /* STATE */
-    ) || __INIT_FAVORITE_STATE;
 
     var AppFavoriteStateService =
     /*#__PURE__*/
@@ -3186,13 +3176,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, AppFavoriteStateService);
 
         this.store = store;
-        this.state$ = this.store.select(_reducers_favorite_selector__WEBPACK_IMPORTED_MODULE_3__["selectFavoriteStore"]);
+        this.state$ = this.store.select(_favorite_favorite_selector__WEBPACK_IMPORTED_MODULE_3__["selectFavoriteStore"]);
       }
 
       _createClass(AppFavoriteStateService, [{
         key: "addFavorite",
         value: function addFavorite(location, locationForecast) {
-          this.store.dispatch(Object(_reducers_favorite_action__WEBPACK_IMPORTED_MODULE_4__["addFavorite"])({
+          this.store.dispatch(Object(_favorite_favorite_action__WEBPACK_IMPORTED_MODULE_4__["addFavorite"])({
             payload: {
               location: location,
               locationForecast: locationForecast
@@ -3202,7 +3192,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "removeFavorite",
         value: function removeFavorite(location) {
-          this.store.dispatch(Object(_reducers_favorite_action__WEBPACK_IMPORTED_MODULE_4__["removeFavorite"])({
+          this.store.dispatch(Object(_favorite_favorite_action__WEBPACK_IMPORTED_MODULE_4__["removeFavorite"])({
             payload: {
               location: location
             }
@@ -3235,17 +3225,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           type: _ngrx_store__WEBPACK_IMPORTED_MODULE_5__["Store"]
         }];
       }, null);
-    })(); ///// this is self implement.. you wanted state management/
-    // but because you wanted NGRX to implemented i used the above code
+    })();
 
-    /**
-     * State (ish) management
-     * I could used NGRX but it's over kill for small usage
-     * i used the same pattern (immutable) and API for updating the state
-     *
-     * @deprecated not in used
-     */
+    var __INIT_FAVORITE_STATE = {
+      mapper: {},
+      locations: [],
+      locationsForecasts: []
+    };
 
+    var INIT_STATE = Object(_shared_utils_local_strorage__WEBPACK_IMPORTED_MODULE_2__["getLocalStorage"])("app-state"
+    /* STATE */
+    ) || __INIT_FAVORITE_STATE;
 
     var AppFavoriteStateService2 =
     /*#__PURE__*/
@@ -3345,15 +3335,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/state/reducers/favorite.action.ts":
+  "./src/app/state/favorite/favorite.action.ts":
   /*!***************************************************!*\
-    !*** ./src/app/state/reducers/favorite.action.ts ***!
+    !*** ./src/app/state/favorite/favorite.action.ts ***!
     \***************************************************/
 
   /*! exports provided: FAVORITE, addFavorite, removeFavorite */
 
   /***/
-  function srcAppStateReducersFavoriteActionTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppStateFavoriteFavoriteActionTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -3389,15 +3379,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/state/reducers/favorite.reducer.ts":
+  "./src/app/state/favorite/favorite.reducer.ts":
   /*!****************************************************!*\
-    !*** ./src/app/state/reducers/favorite.reducer.ts ***!
+    !*** ./src/app/state/favorite/favorite.reducer.ts ***!
     \****************************************************/
 
   /*! exports provided: _favoriteReducer, favoriteReducer */
 
   /***/
-  function srcAppStateReducersFavoriteReducerTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppStateFavoriteFavoriteReducerTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -3430,7 +3420,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _favorite_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ./favorite.action */
-    "./src/app/state/reducers/favorite.action.ts");
+    "./src/app/state/favorite/favorite.action.ts");
 
     var _favoriteReducer = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createReducer"])(_app_favorite_state_service__WEBPACK_IMPORTED_MODULE_1__["__INIT_FAVORITE_STATE"], Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["on"])(_favorite_action__WEBPACK_IMPORTED_MODULE_2__["addFavorite"], function (state, _ref) {
       var payload = _ref.payload;
@@ -3477,15 +3467,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/state/reducers/favorite.selector.ts":
+  "./src/app/state/favorite/favorite.selector.ts":
   /*!*****************************************************!*\
-    !*** ./src/app/state/reducers/favorite.selector.ts ***!
+    !*** ./src/app/state/favorite/favorite.selector.ts ***!
     \*****************************************************/
 
   /*! exports provided: selectFavoriteState, selectFavoriteStore */
 
   /***/
-  function srcAppStateReducersFavoriteSelectorTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppStateFavoriteFavoriteSelectorTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -3519,15 +3509,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/state/reducers/index.ts":
+  "./src/app/state/favorite/index.ts":
   /*!*****************************************!*\
-    !*** ./src/app/state/reducers/index.ts ***!
+    !*** ./src/app/state/favorite/index.ts ***!
     \*****************************************/
 
   /*! exports provided: reducers, metaReducers */
 
   /***/
-  function srcAppStateReducersIndexTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppStateFavoriteIndexTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -3554,7 +3544,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _favorite_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! ./favorite.reducer */
-    "./src/app/state/reducers/favorite.reducer.ts");
+    "./src/app/state/favorite/favorite.reducer.ts");
 
     var reducers = {
       favorite: _favorite_reducer__WEBPACK_IMPORTED_MODULE_1__["favoriteReducer"]
