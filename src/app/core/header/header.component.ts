@@ -4,10 +4,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   selector: 'sl-header',
   template: `
     <div class="row align-item-center">
-      <div class="col-6 d-flex  align-items-center">
+      <div class="col-6 d-flex  justify-content-start justify-content-md-center align-items-center">
         herolo weather task
       </div>
-      <div class="col-6 d-flex justify-content-end">
+      <div class="col-6 d-flex justify-content-end justify-content-md-center ">
         <a nbButton  routerLink="/home" routerLinkActive="active">home</a>
         <a nbButton  routerLink="/favorite" routerLinkActive="active">favorite</a>
       </div>
