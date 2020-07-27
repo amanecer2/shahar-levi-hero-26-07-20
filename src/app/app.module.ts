@@ -13,7 +13,7 @@ import {SharedModule} from './shared/shared.module';
 import {TypeaheadModule} from 'ngx-bootstrap/typeahead';
 import {AccuWeatherService} from './services/accu-weather.service';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './state/reducers';
+import { reducers, metaReducers } from './state/favorite';
 
 @NgModule({
   declarations: [

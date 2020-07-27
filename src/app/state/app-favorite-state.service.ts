@@ -5,24 +5,10 @@ import {BehaviorSubject, of} from 'rxjs';
 import {STRINGS} from '../constant/string.constant';
 import {getLocalStorage, setLocalStorage} from '../shared/utils/local-strorage';
 import {IAutoComplete} from '../interfaces/auto-complete.interface';
-import {IFavoriteStateStore} from './reducers/favorite.reducer';
+import {IFavoriteStateStore} from './favorite/favorite.reducer';
 import {Store} from '@ngrx/store';
-import {selectFavoriteStore} from './reducers/favorite.selector';
-import {addFavorite, removeFavorite} from './reducers/favorite.action';
-
-export interface IFavoriteState {
-  mapper: { [locationId: string]: number };
-  locations: IAutoComplete.RootObject[];
-  locationsForecasts: ICurrentLocationForcast.RootObject[];
-}
-
-export const __INIT_FAVORITE_STATE: IFavoriteState = {
-  mapper: {},
-  locations: [],
-  locationsForecasts: []
-};
-
-const INIT_STATE: IFavoriteState = getLocalStorage<IFavoriteState>(STRINGS.STATE) || __INIT_FAVORITE_STATE;
+import {selectFavoriteStore} from './favorite/favorite.selector';
+import {addFavorite, removeFavorite} from './favorite/favorite.action';
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +44,22 @@ export class AppFavoriteStateService {
  *
  * @deprecated not in used
  */
+
+export interface IFavoriteState {
+  mapper: { [locationId: string]: number };
+  locations: IAutoComplete.RootObject[];
+  locationsForecasts: ICurrentLocationForcast.RootObject[];
+}
+
+export const __INIT_FAVORITE_STATE: IFavoriteState = {
+  mapper: {},
+  locations: [],
+  locationsForecasts: []
+};
+
+const INIT_STATE: IFavoriteState = getLocalStorage<IFavoriteState>(STRINGS.STATE) || __INIT_FAVORITE_STATE;
+
+
 @Injectable({
   providedIn: 'root'
 })
