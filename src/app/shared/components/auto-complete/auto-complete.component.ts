@@ -1,23 +1,25 @@
 import {Component, OnInit, ChangeDetectionStrategy, Input, TemplateRef, Output, EventEmitter} from '@angular/core';
-import { Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {TypeaheadMatch} from 'ngx-bootstrap/typeahead';
 
 
 @Component({
   selector: 'sl-auto-complete',
   template: `
-    <input [(ngModel)]="search"
-           [typeahead]="suggestions$"
-           [typeaheadAsync]="true"
-           [typeaheadItemTemplate]="customTemplate || defaultItemTemplate"
-           
-           [typeaheadOptionsLimit]="7"
-           [typeaheadMinLength]="2"
-           
-           (ngModelChange)="onSearchEventHandler($event)"
-           (typeaheadOnSelect)="onSelectedHandler($event)"
-           class="form-control"
-           [placeholder]="placeholder">
+    <input
+      [(ngModel)]="search"
+      [typeahead]="suggestions$"
+      [typeaheadAsync]="true"
+      [typeaheadItemTemplate]="customTemplate || defaultItemTemplate"
+
+      [typeaheadOptionsLimit]="7"
+      [typeaheadMinLength]="2"
+      [isAnimated]="true"
+      [typeaheadWaitMs]="1000"
+      (ngModelChange)="onSearchEventHandler($event)"
+      (typeaheadOnSelect)="onSelectedHandler($event)"
+      class="form-control"
+      [placeholder]="placeholder">
 
     <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
       {{ errorMessage }}
@@ -43,18 +45,31 @@ export class AutoCompleteComponent implements OnInit {
   @Output() onSearchEvent = new EventEmitter<string>();
   @Output() onSelectedEvent = new EventEmitter<any>();
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
   onSearchEventHandler(str) {
-    if (str !== '[object Object]') {
-      this.onSearchEvent.emit(str);
+    if (!validator(str)) {
+      this.errorMessage = 'only english letters is allowed';
+      return;
     }
+    this.errorMessage = '';
+    this.onSearchEvent.emit(str);
   }
 
   onSelectedHandler(selected: TypeaheadMatch) {
     this.onSelectedEvent.emit(selected.item);
   }
+}
+
+export function validator(text) {
+  switch (true) {
+    case text === '[object Object]':
+    case !/^[a-zA-Z\s]*$/.test(text):
+      return false;
+  }
+  return true;
 }
