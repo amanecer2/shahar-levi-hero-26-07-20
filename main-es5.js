@@ -376,6 +376,48 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
+  "./src/app/constant/api.constant.ts":
+  /*!******************************************!*\
+    !*** ./src/app/constant/api.constant.ts ***!
+    \******************************************/
+
+  /*! exports provided: URLS */
+
+  /***/
+  function srcAppConstantApiConstantTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "URLS", function () {
+      return URLS;
+    });
+    /* harmony import */
+
+
+    var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ../../environments/environment */
+    "./src/environments/environment.ts");
+
+    var BASE_URL = 'http://dataservice.accuweather.com';
+    var API_KEY = "apikey=".concat(_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].accuweatherKey);
+    var URLS = {
+      FIVE_DAYS_DAILY_FORCASTS: function FIVE_DAYS_DAILY_FORCASTS(locationKey) {
+        return "".concat(BASE_URL, "/forecasts/v1/daily/5day/").concat(locationKey, "?").concat(API_KEY);
+      },
+      AUTO_COMPLETE: function AUTO_COMPLETE(q) {
+        return "".concat(BASE_URL, "/locations/v1/cities/autocomplete?").concat(API_KEY, "&q=").concat(q);
+      },
+      CURRENT_CONDITIONS: function CURRENT_CONDITIONS(locationKey) {
+        return "".concat(BASE_URL, "/currentconditions/v1/").concat(locationKey, "?").concat(API_KEY);
+      }
+    };
+    /***/
+  },
+
+  /***/
   "./src/app/core/core.module.ts":
   /*!*************************************!*\
     !*** ./src/app/core/core.module.ts ***!
@@ -1588,7 +1630,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var _constant_api_constant__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../constant/api.constant */
+    "./src/app/constant/api.constant.ts");
+    /* harmony import */
+
+
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @angular/common/http */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
 
@@ -1614,47 +1668,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAutoComplete",
         value: function getAutoComplete(location) {
-          return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(fakeAuto);
-          /* return of(location)
-             .pipe(
-               filter(text => text.length > 2),
-               delay(1000),
-               distinctUntilChanged(),
-               switchMap( res => {
-                 return this.http.get<IAutoComplete.RootObject[]>(URLS.AUTO_COMPLETE(location))
-               })
-             );*/
+          var _this7 = this;
+
+          // return of(fakeAuto)
+          return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(location).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(function (text) {
+            return text.length > 2;
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["delay"])(1000), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["switchMap"])(function (res) {
+            return _this7.http.get(_constant_api_constant__WEBPACK_IMPORTED_MODULE_3__["URLS"].AUTO_COMPLETE(location));
+          }));
         }
       }, {
         key: "getCurrentLocation",
         value: function getCurrentLocation(location) {
-          return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(fakeCurrentLocation);
-          /* return of(location)
-             .pipe(
-               filter(text => text.length > 2),
-               delay(1000),
-               distinctUntilChanged(),
-               switchMap( res => this.http.get<ICurrentLocationForcast.RootObject[]>(URLS.CURRENT_CONDITIONS(location)) ),
-               tap(res => {
-                   debugger
-               }),
-               catchError((err, _) => {
-                  debugger
-                  return throwError(err);
-               })
-                    );*/
+          var _this8 = this;
+
+          //return of(fakeCurrentLocation)
+          return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(location).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(function (text) {
+            return text.length > 2;
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["delay"])(1000), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["switchMap"])(function (res) {
+            return _this8.http.get(_constant_api_constant__WEBPACK_IMPORTED_MODULE_3__["URLS"].CURRENT_CONDITIONS(location));
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(function (err, _) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["throwError"])(err);
+          }));
         }
       }, {
         key: "get5DaysForecast",
         value: function get5DaysForecast(location) {
-          return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(fake5DaysForecasts);
-          /* return of(location)
-             .pipe(
-               filter(text => text.length > 2),
-               delay(1000),
-               distinctUntilChanged(),
-               switchMap( res => this.http.get<I5DaysForecast.RootObject>(URLS.FIVE_DAYS_DAILY_FORCASTS(location)))
-             );*/
+          var _this9 = this;
+
+          //return of(fake5DaysForecasts)
+          return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(location).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(function (text) {
+            return text.length > 2;
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["delay"])(1000), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["switchMap"])(function (res) {
+            return _this9.http.get(_constant_api_constant__WEBPACK_IMPORTED_MODULE_3__["URLS"].FIVE_DAYS_DAILY_FORCASTS(location));
+          }));
         }
       }]);
 
@@ -1662,7 +1709,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     AccuWeatherService.ɵfac = function AccuWeatherService_Factory(t) {
-      return new (t || AccuWeatherService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]));
+      return new (t || AccuWeatherService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]));
     };
 
     AccuWeatherService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
@@ -1680,7 +1727,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }], function () {
         return [{
-          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
+          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]
         }];
       }, null);
     })();
