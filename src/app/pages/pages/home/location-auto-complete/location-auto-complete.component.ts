@@ -4,7 +4,7 @@ import {catchError, switchMap, tap} from 'rxjs/operators';
 import {AccuWeatherService} from '../../../../services/accu-weather.service';
 import {IAutoComplete} from '../../../../interfaces/auto-complete.interface';
 import {NbGlobalLogicalPosition, NbToastrService} from '@nebular/theme';
-import {validator} from '../../../../shared/components/auto-complete/auto-complete.component';
+import {autocompleteTextValidator} from '../../../../shared/components/auto-complete/auto-complete.component';
 
 interface GitHubUserSearchResponse {
   total_count: number;
@@ -67,7 +67,7 @@ export class LocationAutoCompleteComponent implements OnInit {
   ngOnInit(): void {
     let _oldMsg = this.search;
     this.suggestions$ = new Observable((observer: Observer<string>) => {
-      if (this.search === _oldMsg || !validator(this.search)) {
+      if (this.search === _oldMsg || !autocompleteTextValidator(this.search)) {
         return;
       }
       observer.next(this.search);

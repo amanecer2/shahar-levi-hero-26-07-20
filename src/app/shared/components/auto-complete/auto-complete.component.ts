@@ -52,8 +52,10 @@ export class AutoCompleteComponent implements OnInit {
   }
 
   onSearchEventHandler(str) {
-    if (!validator(str)) {
-      this.errorMessage = 'only english letters is allowed';
+    if (!autocompleteTextValidator(str)) {
+      if (str !== '[object Object]') {
+        this.errorMessage = 'only english letters is allowed';
+      }
       return;
     }
     this.errorMessage = '';
@@ -65,10 +67,9 @@ export class AutoCompleteComponent implements OnInit {
   }
 }
 
-export function validator(text) {
+export function autocompleteTextValidator(text) {
   switch (true) {
-    case text === '[object Object]':
-    case !/^[a-zA-Z\s]*$/.test(text):
+    case !/^[0-9A-Za-z ]+$/.test(text):
       return false;
   }
   return true;

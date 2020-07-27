@@ -1,10 +1,14 @@
 import {Injectable} from '@angular/core';
 
 import {ICurrentLocationForcast} from '../interfaces/current-location.interface';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, of} from 'rxjs';
 import {STRINGS} from '../constant/string.constant';
 import {getLocalStorage, setLocalStorage} from '../shared/utils/local-strorage';
 import {IAutoComplete} from '../interfaces/auto-complete.interface';
+import {IFavoriteStateStore} from './reducers/favorite.reducer';
+import {Store} from '@ngrx/store';
+import {selectFavoriteStore} from './reducers/favorite.selector';
+import {addFavorite, removeFavorite} from './reducers/favorite.action';
 
 export interface IFavoriteState {
   mapper: { [locationId: string]: number };
@@ -12,21 +16,52 @@ export interface IFavoriteState {
   locationsForecasts: ICurrentLocationForcast.RootObject[];
 }
 
-const INIT_STATE: IFavoriteState = getLocalStorage(STRINGS.STATE) ||{
+export const __INIT_FAVORITE_STATE: IFavoriteState = {
   mapper: {},
   locations: [],
   locationsForecasts: []
 };
 
-/**
- * State (ish) management
- * I could used NGRX but it's over kill for small usage
- * i used the same pattern (immutable) and API for updating the state
- */
+const INIT_STATE: IFavoriteState = getLocalStorage<IFavoriteState>(STRINGS.STATE) || __INIT_FAVORITE_STATE;
+
 @Injectable({
   providedIn: 'root'
 })
 export class AppFavoriteStateService {
+  constructor(private store: Store<IFavoriteStateStore>) {
+  }
+
+  state$ = this.store.select(selectFavoriteStore);
+
+  addFavorite(location: IAutoComplete.RootObject,
+              locationForecast: ICurrentLocationForcast.RootObject): void {
+    this.store.dispatch(addFavorite({payload: {location, locationForecast}}));
+
+  }
+
+  removeFavorite(location: IAutoComplete.RootObject): void {
+    this.store.dispatch(removeFavorite({payload: {location}}));
+    }
+
+}
+
+
+
+
+///// this is self implement.. you wanted state management/
+// but because you wanted NGRX to implemented i used the above code
+
+/**
+ * State (ish) management
+ * I could used NGRX but it's over kill for small usage
+ * i used the same pattern (immutable) and API for updating the state
+ *
+ * @deprecated not in used
+ */
+@Injectable({
+  providedIn: 'root'
+})
+export class AppFavoriteStateService2 {
   private _state$ = new BehaviorSubject<IFavoriteState>(INIT_STATE);
   state$ = this._state$.asObservable();
 
@@ -77,7 +112,7 @@ export class AppFavoriteStateService {
 
 }
 
-function setMapper(locations: IAutoComplete.RootObject[]) {
+export function setMapper(locations: IAutoComplete.RootObject[]) {
   const mapper = {};
   locations.forEach((l, index) => mapper[l.Key] = index);
   return mapper;

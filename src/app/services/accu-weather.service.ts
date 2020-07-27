@@ -25,8 +25,8 @@ export class AccuWeatherService {
   }
 
   getAutoComplete(location: string): Observable<IAutoComplete.RootObject[]> {
-    // return of(fakeAuto)
-    return of(location)
+     return of(fakeAuto)
+   /* return of(location)
       .pipe(
         filter(text => text.length > 2),
         delay(1000),
@@ -34,12 +34,12 @@ export class AccuWeatherService {
         switchMap( res => {
           return this.http.get<IAutoComplete.RootObject[]>(URLS.AUTO_COMPLETE(location))
         })
-      );
+      );*/
   }
 
   getCurrentLocation(location: string): Observable<ICurrentLocationForcast.RootObject[]> {
-     //return of(fakeCurrentLocation)
-    return of(location)
+     return of(fakeCurrentLocation)
+   /* return of(location)
       .pipe(
         filter(text => text.length > 2),
         delay(1000),
@@ -53,18 +53,18 @@ export class AccuWeatherService {
            return throwError(err);
         })
 
-      );
+      );*/
   }
 
   get5DaysForecast(location: string): Observable<I5DaysForecast.RootObject> {
-    //return of(fake5DaysForecasts)
-    return of(location)
+    return of(fake5DaysForecasts)
+   /* return of(location)
       .pipe(
         filter(text => text.length > 2),
         delay(1000),
         distinctUntilChanged(),
         switchMap( res => this.http.get<I5DaysForecast.RootObject>(URLS.FIVE_DAYS_DAILY_FORCASTS(location)))
-      );
+      );*/
   }
 }
 
