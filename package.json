@@ -3,17 +3,18 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "angular-cli-ghpages": "angular-cli-ghpages",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod --base-href https://amanecer2.github.io/shahar-levi-hero-26-07-20/ && angular-cli-ghpages --branch gh-pages",
+    "deploy": "ng deploy --prod --base-href https://amanecer2.github.io/shahar-levi-hero-26-07-20/",
     "deploy2": "ng build --prod && npx ngh --no-silent",
     "add": "git add .",
     "commit": "git commit -m ",
     "push": "git push -u origin master",
-    "git-pages": "npx ngh --no-silent"
+    "git-pages": "ngh --no-silent"
   },
   "private": true,
   "dependencies": {
