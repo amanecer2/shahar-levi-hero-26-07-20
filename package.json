@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng deploy --prod --base-href https://amanecer2.github.io/shahar-levi-hero-26-07-20/",
+    "deploy": "ng deploy --base-href https://amanecer2.github.io/shahar-levi-hero-26-07-20/",
     "deploy2": "ng build --prod && npx ngh --no-silent",
     "add": "git add .",
     "commit": "git commit -m ",

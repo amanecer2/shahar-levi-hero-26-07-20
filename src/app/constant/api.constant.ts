@@ -1,6 +1,6 @@
 import {environment} from '../../environments/environment';
 
-const BASE_URL = 'httpa://dataservice.accuweather.com';
+const BASE_URL = 'https://dataservice.accuweather.com';
 const API_KEY = `apikey=${environment.accuweatherKey}`;
 
 export const URLS = {
